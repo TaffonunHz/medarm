@@ -1,0 +1,132 @@
+    :root{
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --accent:#0b63ff;
+      --muted:#6b7280;
+      --radius:12px;
+      --max-width:1100px;
+      --gap:24px;
+      --nav-height:68px;
+      --glass:rgba(255,255,255,0.6);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:linear-gradient(180deg,var(--bg),#eef2ff 100%);
+      color:#0f172a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:0 16px 48px;
+    }
+
+    .wrap{max-width:var(--max-width);margin:0 auto}
+
+    /* NAV */
+    #nav-toggle{display:none}
+    /* header now will be animated by transform */
+    header{
+      position:sticky;
+      top:0;            /* top:0 делает анимацию более предсказуемой */
+      z-index:40;
+      transition: transform 260ms cubic-bezier(.2,.9,.2,1), opacity 200ms ease;
+      will-change: transform;
+      pointer-events: auto;
+    }
+    /* when hidden we move header up */
+    header.hidden{
+      transform: translateY(-120%);
+      opacity:0;
+      pointer-events: none;
+    }
+    /* visible state */
+    header.visible{
+      transform: translateY(0);
+      opacity:1;
+    }
+
+    .nav{
+      height:var(--nav-height);
+      display:flex;align-items:center;justify-content:space-between;
+      gap:12px;padding:10px;border-radius:14px;
+      background:linear-gradient(180deg,var(--card),rgba(255,255,255,0.95));
+      box-shadow:0 6px 18px rgba(11,99,255,0.06);
+      backdrop-filter: blur(6px);
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{height:44px;width:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#6dd3ff);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:18px}
+    .brand h1{margin:0;font-size:18px;letter-spacing:-0.2px}
+    nav ul{display:flex;gap:14px;align-items:center;list-style:none;margin:0;padding:0}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:600}
+    nav a:hover{color:var(--accent)}
+
+    .hamburger{display:none}
+
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:var(--gap);align-items:center;padding:48px 8px}
+    .lead{padding:18px;border-radius:12px}
+    .tag{display:inline-block;background:#eef2ff;color:var(--accent);font-weight:700;padding:6px 10px;border-radius:999px;font-size:13px}
+    .title{font-size:34px;margin:12px 0 6px}
+    .desc{color:var(--muted);margin-bottom:18px}
+    .btn{display:inline-block;background:var(--accent);color:white;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:700}
+
+    .hero-card{background:linear-gradient(180deg,rgba(255,255,255,0.7),#fff);padding:18px;border-radius:16px;box-shadow:0 8px 30px rgba(11,99,255,0.06)}
+    .mock{height:320px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#f8fafc,#eef4ff);color:var(--muted);font-weight:600;padding:12px;text-align:center}
+
+    /* Sections */
+    section{margin-top:32px}
+    .section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+    h2{margin:0;font-size:20px}
+    p.lead-muted{color:var(--muted);margin:8px 0 0}
+
+    /* About */
+    .about{display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start}
+    .about .media{display:flex;flex-direction:column;gap:12px}
+    .img-wrap{position:relative;border-radius:10px;overflow:hidden;background:#fff;display:flex;align-items:center;justify-content:center}
+    .img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+    .img-wrap svg{width:80%;height:80%;display:block;opacity:0.92}
+
+    /* Overlay icons */
+    .overlay{position:absolute;right:10px;bottom:10px;background:rgba(11,99,255,0.12);backdrop-filter:blur(6px);padding:8px;border-radius:10px;display:flex;align-items:center;justify-content:center}
+    .overlay svg{width:18px;height:18px;display:block}
+    .img-wrap .alt-label{position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,0.45);color:white;padding:6px 8px;border-radius:8px;font-size:12px}
+
+    /* Gallery */
+    .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .gallery-grid .img-wrap{height:160px;position:relative;border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#fff}
+    .gallery-grid img{max-width:90%;max-height:90%;object-fit:contain;display:block;transition:transform .2s ease}
+    .gallery-grid img:hover{transform:scale(1.03)}
+
+    /* Contact */
+    .contacts{display:flex;gap:18px;flex-wrap:wrap}
+    .contact-card{background:var(--card);padding:16px;border-radius:12px;min-width:220px;flex:1;box-shadow:0 4px 20px rgba(2,6,23,0.04)}
+    .contact-card a{display:block;color:var(--accent);font-weight:600;text-decoration:none;margin-top:6px}
+    .socials{display:flex;gap:10px;margin-top:8px}
+    .socials a{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:8px;background:var(--glass);text-decoration:none}
+
+    footer{margin-top:36px;padding:18px 8px;text-align:center;color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width:1000px){
+      .hero{grid-template-columns:1fr}
+      .about{grid-template-columns:1fr}
+      .gallery-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:640px){
+      .nav{padding:8px}
+      nav ul{display:none}
+      .hamburger{display:block}
+      /* mobile menu (when checkbox checked) */
+      #nav-toggle:checked ~ header .nav .nav-links{display:flex}
+      .nav-links{position:fixed;inset:0;top:72px;background:linear-gradient(180deg,#ffffff,rgba(240,248,255,0.95));backdrop-filter: blur(6px);padding:28px;display:none;flex-direction:column}
+      .hero{padding:28px 6px}
+      .gallery-grid{grid-template-columns:1fr}
+      .mock{height:220px}
+    }
+
+    /* utility */
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
