@@ -130,3 +130,14 @@
     /* utility */
     .muted{color:var(--muted)}
     .small{font-size:13px}
+
+    .admin-panel {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; /* когда скрыто */
+    }
+    .admin-panel.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto; /* когда показано */
+    } 
